@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    var ComputerNum = Math.floor(Math.random() * 101);
-    console.log(ComputerNum);
     /*--- Display information modal box ---*/
     $(".what").click(function() {
         $(".overlay").fadeIn(1000);
@@ -10,44 +8,61 @@ $(document).ready(function() {
     $("a.close").click(function() {
         $(".overlay").fadeOut(1000);
     });
+    var ComputerNum = Math.floor(Math.random() * 101);
+    console.log(ComputerNum);
 
     //New Game//
-  //  $('.new').click(function newGame() {
-        $('.button').click(function() {
-            var userGuess = $("input[name=userGuess]").val();
-            console.log(userGuess);
-            $('#guessList ul').append("<li>" + userGuess + "</li>");
-            if (+userGuess > ComputerNum) {
-                if ((+userGuess - ComputerNum) > 49) {
-                    console.log("ice cold");
-                } else if ((+userGuess - ComputerNum) > 29) {
-                    console.log("cold");
-                } else if ((+userGuess - ComputerNum) > 19) {
-                    console.log("warm");
-                } else if ((+userGuess - ComputerNum) > 9) {
-                    console.log("hot");
-                } else if ((+userGuess - ComputerNum) > 0) {
-                    console.log("very hot");
-                } else if ((+userGuess - ComputerNum) > 0) {
-                    console.log("very hot");
-                }
-            } else if (+userGuess < ComputerNum) {
-                if ((+userGuess - ComputerNum) > 49) {
-                    console.log("ice cold");
-                } else if ((ComputerNum - +userGuess) > 29) {
-                    console.log("cold");
-                } else if ((ComputerNum - +userGuess) > 19) {
-                    console.log("warm");
-                } else if ((ComputerNum - +userGuess) > 9) {
-                    console.log("hot");
-                } else if ((ComputerNum - +userGuess) > 0) {
-                    console.log("very hot");
-                } else if ((ComputerNum - +userGuess) > 0) {
-                    console.log("very hot");
-                }
-            } else if (+userGuess === ComputerNum) {
-                console.log("you got it!");
+    //  $('.new').click(function newGame() {
+    $('.button').click(function() {
+        var userGuess = $("input[name=userGuess]").val();
+        $('ul#guessList').append(userGuess + " " + ",");
+        console.log(userGuess);
+        $('#guessList ul').append("<li>" + userGuess + "</li>");
+        var count = 0
+
+        function incrementCount() {
+            count++;
+        };
+        $('span#count').empty('span#count');
+        $('span#count').append(count);
+        if (+userGuess > ComputerNum) {
+            if ((+userGuess - ComputerNum) > 49) {
+                $('ul#feedback').empty("li.guess");
+                $('ul#feedback').append("<li>" + "ice cold" + "</li>");
+            } else if ((+userGuess - ComputerNum) > 29) {
+                $('ul#feedback').empty("li.guess");
+                $('ul#feedback').append("<li>" + "cold" + "</li>");
+            } else if ((+userGuess - ComputerNum) > 19) {
+                $('ul#feedback').empty("li.guess");
+                $('ul#feedback').append("<li>" + "warm" + "</li>");
+            } else if ((+userGuess - ComputerNum) > 9) {
+                $('ul#feedback').empty("li.guess");
+                $('ul#feedback').append("<li>" + "hot" + "</li>");
+            } else if ((+userGuess - ComputerNum) > 0) {
+                $('ul#feedback').empty("li.guess");
+                $('ul#feedback').append("<li>" + "very hot" + "</li>");
             }
-        });
- //   });
+        } else if (+userGuess < ComputerNum) {
+            if ((+userGuess - ComputerNum) > 49) {
+                $('ul#feedback').empty("li.guess");
+                $('ul#feedback').append("<li>" + "ice cold" + "</li>");
+            } else if ((ComputerNum - +userGuess) > 29) {
+                $('ul#feedback').empty("li.guess");
+                $('ul#feedback').append("<li>" + "cold" + "</li>");
+            } else if ((ComputerNum - +userGuess) > 19) {
+                $('ul#feedback').empty("li.guess");
+                $('ul#feedback').append("<li>" + "warm" + "</li>");
+            } else if ((ComputerNum - +userGuess) > 9) {
+                $('ul#feedback').empty("li.guess");
+                $('ul#feedback').append("<li>" + "hot" + "</li>");
+            } else if ((ComputerNum - +userGuess) > 0) {
+                $('ul#feedback').empty("li.guess");
+                $('ul#feedback').append("<li>" + "very hot" + "</li>");
+            }
+        } else if (+userGuess === ComputerNum) {
+            $('ul#feedback').empty("li.guess");
+            $('ul#feedback').append("<li>" + "You got it!" + "</li>");
+        }
+    });
+    //   });
 });
